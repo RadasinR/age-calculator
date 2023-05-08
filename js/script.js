@@ -1,5 +1,37 @@
 const months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const maxYear = new Date().getFullYear();
+let start = null;
+let outputYear, outputMonth, outputDay;
+
+
+function animateOutput(timestamp) {
+  let oYear = document.getElementById("printYears");
+  let oMonth = document.getElementById("printMonths");
+  let oDay = document.getElementById("printDays");
+
+  let done = false;
+  if (!start) {
+    start = timestamp;
+  }
+
+  const elapsed = timestamp - start;
+  if (elapsed >= 300) {
+    if (oYear.innerText != outputYear) {
+      oYear.innerText = Number(oYear.innerText) + 1;
+    } 
+    if (oMonth.innerText != outputMonth) {
+      oMonth.innerText = Number(oMonth.innerText) + 1;
+    } 
+    if (oDay.innerText != outputDay) {
+      oDay.innerText = Number(oDay.innerText) + 1;
+    } 
+  }
+
+  if (oDay.innerText == outputDay &&  oMonth.innerText == outputMonth && oYear.innerText == outputYear) {
+    return;
+  }
+  requestAnimationFrame(animateOutput);
+}
 
 function leap(year) {
   if (year % 4 === 0) {
@@ -114,9 +146,9 @@ function calcAge() {
     const birthDay = new Date(year.value, month.value - 1, day.value);
     const today = new Date();
 
-    let outputYear = today.getFullYear() - birthDay.getFullYear();
-    let outputMonth = today.getMonth() + 1 - (birthDay.getMonth() + 1);
-    let outputDay = today.getDate() - birthDay.getDate();
+    outputYear = today.getFullYear() - birthDay.getFullYear();
+    outputMonth = today.getMonth() + 1 - (birthDay.getMonth() + 1);
+    outputDay = today.getDate() - birthDay.getDate();
 
     if (outputMonth < 0) {
       outputYear -= 1;
@@ -128,8 +160,14 @@ function calcAge() {
         outputDay = today.getDate();
       }
     }
-    document.getElementById("printYears").innerText = outputYear;
+    //no animation code
+    /*  document.getElementById("printYears").innerText = outputYear;
     document.getElementById("printMonths").innerText = outputMonth;
-    document.getElementById("printDays").innerText = outputDay;
+    document.getElementById("printDays").innerText = outputDay; */
+
+    document.getElementById("printYears").innerText = 0;
+    document.getElementById("printMonths").innerText = 0;
+    document.getElementById("printDays").innerText = 0;
+    requestAnimationFrame(animateOutput);
   }
 }
