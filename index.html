@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="js/script.js"></script>
+    <title>Frontend Mentor | Age calculator app</title>
+  </head>
+  <body>
+    <article class="age-calculator grid" style="--GAP: 3rem">
+      <h1 class="sr-only">Age Calculator</h1>
+      <form id="enterAge" class="age-input flex" style="--GAP: 1.5rem" novalidate>
+        <div class="input-box grid" style="--GAP: 0.3rem">
+          <label class="input__label accent--gray" for="day">Day</label>
+          <input
+            id="day"
+            class="input__text"
+            type="text"
+            name="day"
+            placeholder="DD"
+            oninput="resetError(this)"
+          />
+          <label id="dayError" class="accent--red errorLabel" for="day"></label>
+        </div>
+        <div class="input-box grid" style="--GAP: 0.3rem">
+          <label class="input__label accent--gray" for="month">Month</label>
+          <input
+            id="month"
+            class="input__text"
+            type="text"
+            name="month"
+            placeholder="MM"
+            oninput="resetError(this)"
+          />
+          <label id="monthError" class="accent--red errorLabel" for="month"></label>
+        </div>
+        <div class="input-box grid" style="--GAP: 0.3rem">
+          <label class="input__label accent--gray" for="year">Year</label>
+          <input
+            id="year"
+            class="input__text"
+            type="text"
+            name="year"
+            placeholder="YY"
+            oninput="resetError(this)"
+          />
+          <label id="yearError" class="accent--red errorLabel" for="year"></label>
+        </div>
+        <label for="submit" class="sr-only">Submit the entered date</label>
+        <button id="submit" class="btn input__btn bg--purple" type="button" onclick="calcAge()">
+          <img src="assets/images/icon-arrow.svg" alt="down arrow" />
+        </button>
+      </form>
+      <section class="output-box grid" style="--GAP: 0rem">
+        <h2 class="sr-only">Years, months, days since birth.</h2>
+        <output class="output" for="enterAge"
+          ><span id="printYears" class="accent--purple">--</span> years</output
+        >
+        <output class="output" for="enterAge"
+          ><span id="printMonths" class="accent--purple">--</span> months</output
+        >
+        <output class="output" for="enterAge"
+          ><span id="printDays" class="accent--purple">--</span> days</output
+        >
+      </section>
+    </article>
+  </body>
+</html>

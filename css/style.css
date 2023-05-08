@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap");
+
+/* RESET */
+*,
+::after,
+::before {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+picture,
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* END RESET */
+
+/* CUSTOM PROPERTIES */
+:root {
+  /* Colors */
+  --PURPLE: hsl(259, 100%, 65%);
+  --LIGHT-RED: hsl(0, 100%, 67%);
+
+  --WHITE: hsl(0, 0%, 100%);
+  --OFF-WHITE: hsl(0, 0%, 94%);
+  --LIGHT-GRAY: hsl(0, 0%, 86%);
+  --SMOKEY-GRAY: hsl(0, 1%, 44%);
+  --OFF-BLACK: hsl(0, 0%, 8%);
+  /* End  colors */
+
+  /* Typography */
+  --FS-INPUT: 1.3rem;
+  --FS-LABEL: 0.75rem;
+  --FS-OUTPUT: 3rem;
+
+  --FF: "Poppins", sans-serif;
+  --BOLD: 700;
+  --BOLDER: 800;
+
+  /* End typography */
+  --WIDTH: 4rem;
+}
+/* END CUSTOM PROPERTIES */
+
+/* GENERAL STYLE */
+body {
+  background-color: var(--LIGHT-GRAY);
+  font-family: var(--FF);
+}
+/* END GENERAL STYLE */
+
+/* BLOCKS */
+.age-calculator {
+  margin-top: 5rem;
+
+  background-color: var(--WHITE);
+  width: 21.56rem;
+  margin-inline: auto;
+  padding-inline: 1.1em;
+  padding-top: 3.43em;
+  padding-bottom: 2em;
+  border-radius: 1em 1em 6.25em 1em;
+}
+.age-input {
+  padding-bottom: 4.125rem;
+  border-bottom: 3px solid var(--OFF-WHITE);
+  align-items: flex-start;
+}
+
+
+.output-box {
+  grid-template-rows: var(--FS-OUTPUT) var(--FS-OUTPUT) var(--FS-OUTPUT);
+ 
+}
+
+.output {
+  display: flex;
+  align-items: center;
+}
+/* END BLOCKS */
+
+/* ELEMENTS */
+.input__label {
+  text-transform: uppercase;
+  letter-spacing: 0.33em;
+
+  font-size: var(--FS-LABEL);
+  font-weight: var(--BOLD);
+  margin-bottom: 0.25rem;
+}
+
+.input__text {
+  outline: none;
+  border: 2px solid var(--OFF-WHITE);
+  width: 100%;
+  border-radius: 0.3em;
+  padding-inline: 1rem;
+  padding: 0.75rem;
+  color: var(--OFF-BLACK);
+  font-size: var(--FS-INPUT);
+  font-weight: var(--BOLDER);
+  caret-color: var(--PURPLE);
+}
+
+.input__text::placeholder {
+  color: var(--SMOKEY-GRAY);
+}
+
+.input__text:is(:focus, :hover) {
+  border-color: var(--PURPLE);
+}
+
+.error {
+  border: 2px solid var(--LIGHT-RED);
+}
+.errorLabel {
+  font-size: var(--FS-LABEL);
+}
+.btn {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.input__btn {
+  position: absolute;
+  bottom: calc(-1 * var(--WIDTH) / 2);
+  left: calc(50% - var(--WIDTH) / 2);
+  width: var(--WIDTH);
+  height: var(--WIDTH);
+  border-radius: 50%;
+
+  transition-property: background;
+  transition-duration: 0.7s;
+}
+
+.input__btn img {
+  margin-inline: auto;
+  width: 50%;
+}
+
+.input__btn:hover {
+  background-color: var(--OFF-BLACK);
+}
+
+.output {
+  font-style: italic;
+  font-size: var(--FS-OUTPUT);
+  font-weight: var(--BOLDER);
+}
+
+/* END ELEMENTS */
+
+/* MODIFIERS */
+.bg--purple {
+  background-color: var(--PURPLE);
+}
+.accent--purple {
+  color: var(--PURPLE);
+}
+
+.accent--gray {
+  color: var(--SMOKEY-GRAY);
+}
+
+.accent--red {
+  color: var(--LIGHT-RED);
+}
+/* END MODIFIERS */
+
+/* UTILITY */
+.flex {
+  display: flex;
+  gap: var(--GAP, 1rem);
+}
+.grid {
+  display: grid;
+  gap: var(--GAP, 1rem);
+}
+
+.box {
+  max-width: 75ch;
+  padding-inline: var(--PADDING, 1em);
+  margin-inline: auto;
+}
+
+.sr-only {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
+
+/* END UTILITY */
+
+/* MEDIA */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  :root {
+    --FS-LABEL: 0.875rem;
+    --FS-INPUT: 2rem;
+    --FS-OUTPUT: 6rem;
+
+    --WIDTH: 90px;
+  }
+
+  .age-calculator {
+    width: 52.375rem;
+    padding-inline: 3rem;
+    padding-bottom: 3.3rem;
+  }
+
+  .age-input {
+   padding-right: 15.625rem;
+   
+
+  }
+
+
+  .input__btn {
+    left: auto;
+    right: 0;
+  }
+}
+/* END MEDIA */
